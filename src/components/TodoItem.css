@@ -1,0 +1,15 @@
+/* TodoItem.css */
+.todo-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.todo-item .completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.todo-item button {
+  margin-left: auto;
+}
