@@ -10,7 +10,6 @@ export const initializeLocalStorage = () => {
           ToDoID: 1,
           postsID: 1
         }
-        // Add more users as needed
       ],
       ToDo: [
         {
@@ -18,7 +17,6 @@ export const initializeLocalStorage = () => {
           ToDoName: "dishes",
           ToDoContent: "clean them please!"
         }
-        // Add more todos as needed
       ],
       posts: [
         {
@@ -27,7 +25,6 @@ export const initializeLocalStorage = () => {
           postContent: "hi, this is my first post",
           comments: []
         }
-        // Add more posts as needed
       ]
       
     };

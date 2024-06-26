@@ -1,7 +1,7 @@
 import React from 'react';
-import './TodoItem.css'; // Import a CSS file for styling
+import './TodoItem.css';
 
-const TodoItem = ({ todo, onEdit, onToggle, index }) => {
+const TodoItem = ({ todo, onEdit, onToggle, onDelete, index }) => {
   return (
     <div className="todo-item">
       <input
@@ -13,6 +13,7 @@ const TodoItem = ({ todo, onEdit, onToggle, index }) => {
         {index + 1}. {todo.ToDoName} (ID: {todo.id})
       </span>
       <button onClick={() => onEdit(todo)}>Edit</button>
+      <button onClick={() => onDelete(todo.id)}>Delete</button>
     </div>
   );
 };
