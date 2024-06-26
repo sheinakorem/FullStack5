@@ -31,13 +31,11 @@ h1 {
   text-align-last: center;
   
 }
-
 h2 {
   font-size: 1.5em;
   margin-bottom: 10px;
   color: #bba2cc;
 }
-
 p,
 input,
 textarea {
