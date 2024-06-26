@@ -1,26 +1,49 @@
 {
-    "users":[
-        {
-            "id":1,
-            "username":"mike",
-            "website":"123",
-            "ToDoID":1,
-            "postsID":1
-        }
-    ],
-    "ToDo":[
-        {
-            "id":1,
-            "ToDoName":"dishes",
-            "ToDoContent":"clean them please!"
-        }
-    ],
-    "posts":[
-        {
-            "id":1,
-            "postTitle":"hi",
-            "postContent":"hi,this is my first post",
-            "comments":[]
-        }
-    ]
+  "users": [
+    {
+      "Uid": "1",
+      "username": "mike",
+      "website": "123",
+      "ToDoID": 1,
+      "postsID": [1,2]
+    },
+    {
+      "Uid": "2",
+      "username": "bob",
+      "website": "1",
+      "ToDoID": 1,
+      "postsID": [2]
+    },
+    {
+      "Uid": "3",
+      "username": "jake",
+      "website": "2",
+      "ToDoID": 1,
+      "postsID": [2]
+    }
+  ],
+  "ToDo": [
+    {
+      "Tid": "1",
+      "ToDoName": "dishes",
+      "ToDoContent": "clean them please!"
+    }
+  ],
+  "posts": [
+    {
+        "Pid": "1",
+        "postTitle": "hi!",
+        "postContent": "hi,this is my first post"
+    },
+    {
+      "Pid": "2",
+      "postTitle": "second",
+      "postContent": "hi,this is my second post"
+    },
+    {
+      "Pid": "3",
+      "postTitle": "a",
+      "postContent": "a3"
+    }
+  ]
 }
