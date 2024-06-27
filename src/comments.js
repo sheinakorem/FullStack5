@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-//comments for posts
+import './posts.css';
+
 const Comments = () => {
-    const { id } = useParams();
+    const { userId, postId } = useParams(); // Fetch userId and postId from URL params
     const [postComments, setPostComments] = useState([]);
     const [newComment, setNewComment] = useState('');
-//getting the comments from ls
+
+    // loading comments from ls
     const loadCommentsFromLocalStorage = () => {
-        const savedComments = localStorage.getItem(`comments_${id}`);
+        const savedComments = localStorage.getItem(`comments_${postId}`);
         return savedComments ? JSON.parse(savedComments) : [];
     };
-//putting the comments into ls
+
+    // saving the comments to the ls
     const saveCommentsToLocalStorage = (comments) => {
-        localStorage.setItem(`comments_${id}`, JSON.stringify(comments));
+        localStorage.setItem(`comments_${postId}`, JSON.stringify(comments));
     };
-//going to the url and fetching data
+
+    //fetching the information from the website
     useEffect(() => {
         const fetchComments = async () => {
             try {
@@ -22,7 +26,7 @@ const Comments = () => {
                 if (savedComments.length > 0) {
                     setPostComments(savedComments);
                 } else {
-                    const response = await fetch(`http://localhost:3000/posts/${id}/comments`);
+                    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
                     if (!response.ok) {
                         throw new Error('Failed to fetch comments');
                     }
@@ -36,21 +40,21 @@ const Comments = () => {
         };
 
         fetchComments();
-    }, [id]);
-//adding a comment
+    }, [postId]);
+
+    //adding a new comment
     const handleAddComment = async () => {
         const newCommentObj = {
-            postId: Number(id),
-            id: postComments.length + 1,
+            postId: Number(postId),
+            id: Date.now(), 
             body: newComment,
         };
         const updatedComments = [...postComments, newCommentObj];
         setPostComments(updatedComments);
         saveCommentsToLocalStorage(updatedComments);
 
-        // add new comment to json-server
         try {
-            const response = await fetch('http://localhost:3000/comments', {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,15 +69,15 @@ const Comments = () => {
         }
         setNewComment('');
     };
-//deleting a comment
+
+    //deleting a comment
     const handleDeleteComment = async (commentId) => {
         const updatedComments = postComments.filter((comment) => comment.id !== commentId);
         setPostComments(updatedComments);
         saveCommentsToLocalStorage(updatedComments);
 
-        // delete comment from json
         try {
-            const response = await fetch(`http://localhost:3000/comments/${commentId}`, {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/comments/${commentId}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
@@ -83,14 +87,15 @@ const Comments = () => {
             console.error('Error deleting comment:', error);
         }
     };
-//updating comment
+
+    // updating a comment
     const handleInputChange = (event) => {
         setNewComment(event.target.value);
     };
-//the http
+
     return (
         <div>
-            <h1 className="comments-header">Comments</h1>
+            <h1 className="comments-header">Comments for Post {postId}</h1>
             <ul className="comments-list">
                 {postComments.map((comment) => (
                     <li key={comment.id} className="comment-item">

@@ -1,0 +1,30 @@
+ 
+  .user-item h1 {
+    font-size: 2em;
+    color: #bba2cc; 
+    text-align: center;
+  }
+  
+  .user-item nav {
+    margin-top: 20px;
+  }
+  
+  .user-item nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user-item nav ul li {
+    margin-bottom: 10px;
+  }
+  
+  .user-item nav ul li a {
+    display: block;
+    padding: 10px;
+    background-color: #bba2cc; 
+    color: #fff; 
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+  
+  }
